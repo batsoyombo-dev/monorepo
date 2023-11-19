@@ -1,0 +1,24 @@
+{
+    "name": "@monorepo/request-context",
+    "version": "1.0.0",
+    "description": "",
+    "main": ".dist/index.js",
+    "scripts": {
+        "build": "tsc --skipLibCheck"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/batsoyombo-dev/sso-oauth.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/batsoyombo-dev/sso-oauth/issues"
+    },
+    "homepage": "https://github.com/batsoyombo-dev/sso-oauth#readme",
+    "devDependencies": {
+        "@types/node": "^17.0.33",
+        "typescript": "^4.9.4"
+    },
+    "dependencies": {}
+}

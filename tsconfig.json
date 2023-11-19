@@ -95,13 +95,7 @@
         "experimentalDecorators": true,
         /* Completeness */
         // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-        "skipLibCheck": true, /* Skip type checking all .d.ts files. */
-
-        "baseUrl": ".",
-        "paths": {
-            "@monorepo/libraries": [ "libraries/*" ],
-            "@monorepo/services": ["services/*"],
-        }
+        "skipLibCheck": true /* Skip type checking all .d.ts files. */
     },
     "exclude": [
         "node_modules",

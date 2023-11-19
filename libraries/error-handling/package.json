@@ -1,0 +1,27 @@
+{
+    "name": "@monorepo/error-handling",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "devDependencies": {
+        "@types/node": "^20.9.2",
+        "typescript": "^5.2.2"
+    },
+    "dependencies": {
+        "@monorepo/logger": "1.0.0"
+    },
+    "scripts": {
+        "build": "tsc --skipLibCheck"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/batsoyombo-dev/sso-oauth.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/batsoyombo-dev/sso-oauth/issues"
+    },
+    "homepage": "https://github.com/batsoyombo-dev/sso-oauth#readme"
+}

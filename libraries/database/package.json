@@ -5,7 +5,7 @@
     "main": "./dist/index.js",
     "types": "index.ts",
     "scripts": {
-        "build": "tsc",
+        "build": "tsc --skipLibCheck",
         "prisma:init": "prisma init",
         "prisma:migrate": "prisma migrate dev --preview-feature",
         "prisma:generate": "prisma generate",
