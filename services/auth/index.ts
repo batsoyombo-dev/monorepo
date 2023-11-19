@@ -1,14 +1,20 @@
-import express, { Request, Response } from "express";
+import { AppError, errorHandler } from "@monorepo/error-handling";
+import { logger } from "@monorepo/logger";
+import { startWebServer } from "./src/server";
 
-const app = express();
-const port = process.env.PORT || 3000;
+async function start() {
+    // 🦉 Array of entry point is being used to support more entry-points kinds like message queue, scheduled job,
+    return Promise.all([startWebServer()]);
+}
 
-app.get("/", (req: Request, res: Response) => {
-    console.log(req.accepted);
-
-    res.send("Hello, TypeScript Express!");
-});
-
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-});
+start()
+    .then((startResponses) => {
+        logger.info(`The app has started successfully ${startResponses}}`);
+    })
+    .catch((error) => {
+        // ️️️✅ Best Practice: A failure during startup is catastrophic and should lead to process exit (you may retry before)
+        // Consequently, we flag the error as catastrophic
+        errorHandler.handleError(
+            new AppError("startup-failure", error.message, 500, false, error)
+        );
+    });

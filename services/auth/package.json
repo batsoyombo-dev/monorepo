@@ -4,7 +4,7 @@
     "description": "",
     "main": ".dist/index.js",
     "scripts": {
-        "start": "PORT=3000 PRETTY_PRINT=false node .dist/index.js",
+        "start": "PORT=3000 PRETTY_PRINT=false node index.js",
         "start:dev": "PORT=3000 PRETTY_PRINT=true nodemon index.ts",
         "test": "PRETTY_PRINT=true jest --forceExit --verbose=true --runInBand",
         "test:dev": "jest --watch --silent --runInBand --coverage=false --reporters='default'",
@@ -28,6 +28,8 @@
     "dependencies": {
         "@monorepo/configuration-provider": "1.0.0",
         "@monorepo/database": "1.0.0",
+        "@monorepo/error-handling": "1.0.0",
+        "@monorepo/logger": "1.0.0",
         "dotenv": "^16.3.1",
         "express": "^4.18.2",
         "helmet": "^7.1.0"

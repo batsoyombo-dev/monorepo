@@ -1,10 +1,12 @@
-import configurationSchema from "@/config";
 import * as configurationProvider from "@monorepo/configuration-provider";
+import { errorHandler } from "@monorepo/error-handling";
+import { logger } from "@monorepo/logger";
 import * as dotenv from "dotenv";
 import express from "express";
 import helmet from "helmet";
 import { Server } from "http";
 import { AddressInfo } from "net";
+import configurationSchema from "./config";
 import defineRoutes from "./routes";
 
 dotenv.config();
@@ -15,6 +17,14 @@ let connection: Server;
 async function startWebServer(): Promise<AddressInfo> {
     // ️️️✅ Best Practice: Declare a strict configuration schema and fail fast if the configuration is invalid
     configurationProvider.initializeAndValidate(configurationSchema);
+    logger.configureLogger(
+        {
+            prettyPrint: Boolean(
+                configurationProvider.getValue("logger.prettyPrint")
+            ),
+        },
+        true
+    );
     const expressApp = express();
     expressApp.use(helmet());
     expressApp.use(express.urlencoded({ extended: true }));
@@ -42,6 +52,7 @@ async function openConnection(
         // ️️️✅ Best Practice: Allow a dynamic port (port 0 = ephemeral) so multiple webservers can be used in multi-process testing
         const portToListenTo = configurationProvider.getValue("port");
         const webServerPort = portToListenTo || 0;
+        logger.info(`Server is about to listen to port ${webServerPort}`);
         connection = expressApp.listen(webServerPort, () => {
             resolve(connection.address() as AddressInfo);
         });
@@ -53,11 +64,11 @@ function defineErrorHandlingMiddleware(expressApp: express.Application) {
         async (
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             error: any,
-            req: express.Request,
+            _req: express.Request,
             res: express.Response,
             // Express requires next function in default error handlers
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            next: express.NextFunction
+            _next: express.NextFunction
         ) => {
             if (error && typeof error === "object") {
                 if (error.isTrusted === undefined || error.isTrusted === null) {
@@ -65,7 +76,7 @@ function defineErrorHandlingMiddleware(expressApp: express.Application) {
                 }
             }
             // ✅ Best Practice: Pass all error to a centralized error handler so they get treated equally
-
+            errorHandler.handleError(error);
             res.status(error?.HTTPStatus || 500).end();
         }
     );

@@ -6,17 +6,9 @@
     "scripts": {
         "build": "tsc --skipLibCheck"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/batsoyombo-dev/sso-oauth.git"
-    },
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/batsoyombo-dev/sso-oauth/issues"
-    },
-    "homepage": "https://github.com/batsoyombo-dev/sso-oauth#readme",
     "dependencies": {
         "@monorepo/configuration-provider": "1.0.0",
         "@monorepo/request-context": "1.0.0",

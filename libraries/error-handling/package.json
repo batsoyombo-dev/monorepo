@@ -2,7 +2,7 @@
     "name": "@monorepo/error-handling",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": ".dist/index.js",
     "devDependencies": {
         "@types/node": "^20.9.2",
         "typescript": "^5.2.2"

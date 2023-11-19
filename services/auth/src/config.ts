@@ -1,5 +1,3 @@
-// ️️️✅ Best Practice: Store configuration in a self-explanatory, strongly typed and hierarchical store
-
 export default {
     jwtTokenSecret: {
         doc: "The JWT token signing algorithm secret",
