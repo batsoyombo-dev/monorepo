@@ -1,0 +1,30 @@
+{
+    "name": "@monorepo/database",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./dist/index.js",
+    "types": "index.ts",
+    "scripts": {
+        "build": "tsc",
+        "prisma:init": "prisma init",
+        "prisma:migrate": "prisma migrate dev --preview-feature",
+        "prisma:generate": "prisma generate",
+        "prisma:push": "dotenv -e ../../.env prisma db push",
+        "prisma:pull": "dotenv -e ../../.env prisma db pull",
+        "prisma:seed": "cross-env NODE_ENV=development ts-node src/prisma/seed/index.ts",
+        "prisma:truncate": "cross-env NODE_ENV=development ts-node src/prisma/truncate.ts",
+        "prisma:reset": "cross-env NODE_ENV=development ts-node src/prisma/truncate.ts && prisma db push && ts-node src/prisma/seed/index.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^20.9.2",
+        "prisma": "^5.6.0",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.2.2"
+    },
+    "dependencies": {
+        "@prisma/client": "^5.6.0"
+    }
+}
