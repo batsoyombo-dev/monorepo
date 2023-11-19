@@ -1,0 +1,19 @@
+{
+    "name": "@monorepo/configuration-provider",
+    "version": "1.0.0",
+    "description": "",
+    "main": ".dist/index.js",
+    "scripts": {
+        "build": "tsc "
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/convict": "^6.1.6",
+        "typescript": "^5.2.2"
+    },
+    "dependencies": {
+        "convict": "^6.2.4"
+    }
+}
