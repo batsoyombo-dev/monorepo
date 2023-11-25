@@ -10,7 +10,8 @@
         "lint": "eslint '**/*.{js,jsx,ts}'",
         "maintenance:delete-node-modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
         "maintenance:delete-dist": "find . -name '.dist' -type d -prune -exec rm -rf '{}' +",
-        "dev:auth": "npm run start:dev -w @monorepo/auth"
+        "dev:auth": "npm run start:dev -w @monorepo/auth",
+        "dev:api": "npm run start:dev -w @monorepo/api"
     },
     "keywords": [],
     "author": "",
